@@ -3,460 +3,422 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PSBB Matriculation Higher Secondary School | Excellence in Education</title>
-    <meta name="description" content="PSBB Matriculation Higher Secondary School - An unit of Indira Arumugam Charity Trust. Admissions Open.">
+    <title>PSBB Matric Higher Secondary School - Mangadu</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- CSS VARIABLES (Change colors here) --- */
-        :root {
-            --primary: #0f172a;      /* Deep Navy (Zen/Professional) */
-            --accent: #2563eb;       /* Bright Blue for Actions */
-            --accent-hover: #1d4ed8;
-            --bg-light: #f8fafc;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-            --white: #ffffff;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        /* --- RESET & BASE STYLES --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; }
+        body { font-family: 'Poppins', sans-serif; }
         
-        /* Container utility */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 4px; }
+
+        /* Popup Animation */
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
         }
 
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .top-bar {
-            background: var(--primary);
-            color: var(--white);
-            font-size: 0.85rem;
-            padding: 8px 0;
-            text-align: center;
-        }
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .logo img { height: 50px; }
-        .logo-text h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
-        .logo-text p { font-size: 0.75rem; color: var(--text-light); }
-
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--text-dark); }
-        .nav-links a:hover { color: var(--accent); }
-        
-        .btn-primary {
-            background: var(--accent);
-            color: var(--white);
-            padding: 10px 24px;
-            border-radius: 6px;
-            font-weight: 600;
-            display: inline-block;
-        }
-        .btn-primary:hover { background: var(--accent-hover); }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            position: relative;
-            height: 80vh;
-            min-height: 500px;
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-        }
-        .hero-content h2 {
-            font-family: 'Merriweather', serif;
-            font-size: 3rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* --- SECTIONS COMMON --- */
-        section { padding: 80px 0; }
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .section-title h3 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        .section-title .line {
-            width: 60px;
-            height: 4px;
-            background: var(--accent);
-            margin: 0 auto;
-        }
-
-        /* --- NEWS & ANNOUNCEMENTS (Dynamic) --- */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .news-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-        .news-date {
-            background: var(--bg-light);
-            padding: 10px 20px;
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-weight: 600;
-            border-bottom: 1px solid var(--border);
-        }
-        .news-body { padding: 20px; }
-        .news-body h4 { font-size: 1.2rem; margin-bottom: 10px; color: var(--primary); }
-        .news-body p { color: var(--text-light); font-size: 0.95rem; }
-
-        /* --- ABOUT & STATS --- */
-        .about-section { background: var(--bg-light); }
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        .about-text p { margin-bottom: 20px; color: var(--text-light); }
-        .about-image img { border-radius: 12px; box-shadow: var(--shadow); }
-
-        /* --- TOPPERS SECTION (Dynamic) --- */
-        .toppers-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        .topper-card {
-            text-align: center;
-            background: var(--white);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            width: 250px;
-        }
-        .topper-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 15px;
-            background: #ddd; /* Placeholder color */
-        }
-        .topper-score {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        .topper-name { font-weight: 600; margin-top: 5px; }
-
-        /* --- FOOTER --- */
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 60px 0 20px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        .footer-col h4 { margin-bottom: 20px; color: var(--white); }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: #94a3b8; }
-        .footer-col ul li a:hover { color: var(--white); }
-        .contact-info p { margin-bottom: 10px; color: #94a3b8; display: flex; gap: 10px; }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                padding: 20px;
-                box-shadow: var(--shadow);
-            }
-            .nav-links.active { display: flex; }
-            .menu-toggle { display: block; }
-            .hero-content h2 { font-size: 2rem; }
-            .about-grid { grid-template-columns: 1fr; }
-        }
+        /* Mobile Menu */
+        #mobile-menu { transition: max-height 0.3s ease-in-out; max-height: 0; overflow: hidden; }
+        #mobile-menu.open { max-height: 400px; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-    <div class="top-bar" id="announcement-bar">
-        </div>
-
-    <header>
-        <div class="container nav-wrapper">
-            <div class="logo">
-                <img src="https://via.placeholder.com/50x50/0f172a/ffffff?text=PSBB" alt="PSBB Logo">
-                <div class="logo-text">
-                    <h1>PSBB Matric. Hr. Sec. School</h1>
-                    <p>Mangadu, Chennai</p>
+    <div id="admissionPopup" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm">
+        <div class="bg-white rounded-lg shadow-2xl max-w-md w-full mx-4 overflow-hidden relative transform scale-95 transition-transform duration-300" id="popupContent">
+            <div class="bg-blue-900 p-4 text-white flex justify-between items-center">
+                <h3 class="font-bold text-lg"><i class="fas fa-bullhorn mr-2"></i> Announcement</h3>
+                <button onclick="closePopup()" class="text-white hover:text-red-400 text-2xl">&times;</button>
+            </div>
+            <div class="p-6 text-center">
+                <h2 class="text-2xl font-bold text-blue-900 mb-2">ADMISSIONS OPEN</h2>
+                <p class="text-gray-600 mb-4 font-semibold">Academic Year 2025 - 2026</p>
+                <p class="text-sm text-gray-500 mb-6">Applications are now being accepted for grades Pre-KG to Grade XII. Secure your child's future today.</p>
+                
+                <div class="flex flex-col gap-3">
+                    <a href="#admissions" onclick="closePopup()" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-4 rounded transition">Apply Now</a>
+                    <button onclick="closePopup()" class="text-gray-400 text-sm hover:text-gray-600">Close</button>
                 </div>
             </div>
-            <div class="menu-toggle" id="mobile-menu">☰</div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#academics">Academics</a></li>
-                <li><a href="#admissions">Admissions</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact" class="btn-primary">Contact Us</a></li>
-            </ul>
+        </div>
+    </div>
+
+    <div class="bg-blue-900 text-white text-xs py-2">
+        <div class="container mx-auto px-4 flex justify-between items-center flex-wrap">
+            <div class="flex items-center gap-4">
+                <span><i class="fas fa-phone-alt mr-1"></i> 7358518306 / 9282145312</span>
+                <span class="hidden md:inline"><i class="fas fa-envelope mr-1"></i> psbb_school@yahoo.co.in</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="#" class="hover:text-yellow-400"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-yellow-400"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-yellow-400"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center text-white font-bold text-xl">P</div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-bold text-blue-900 leading-tight">PSBB Matric</h1>
+                    <p class="text-xs text-gray-500 font-semibold tracking-wider">MANGADU, CHENNAI</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex space-x-8 font-semibold text-sm text-gray-700">
+                <a href="#home" class="hover:text-blue-900 transition">HOME</a>
+                <a href="#about" class="hover:text-blue-900 transition">ABOUT</a>
+                <a href="#academics" class="hover:text-blue-900 transition">ACADEMICS</a>
+                <a href="#news" class="hover:text-blue-900 transition">NEWS</a>
+                <a href="#contact" class="hover:text-blue-900 transition">CONTACT</a>
+                <a href="#admissions" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-4 py-2 rounded-md transition">ADMISSION</a>
+            </div>
+
+            <button class="md:hidden text-blue-900 text-2xl" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="bg-gray-50 border-t md:hidden flex flex-col px-4 pb-4">
+            <a href="#home" class="py-2 border-b" onclick="toggleMobileMenu()">Home</a>
+            <a href="#about" class="py-2 border-b" onclick="toggleMobileMenu()">About</a>
+            <a href="#academics" class="py-2 border-b" onclick="toggleMobileMenu()">Academics</a>
+            <a href="#news" class="py-2 border-b" onclick="toggleMobileMenu()">News</a>
+            <a href="#admissions" class="py-2 font-bold text-blue-900" onclick="toggleMobileMenu()">Admission Open</a>
+        </div>
+    </nav>
+
+    <header id="home" class="relative bg-blue-900 h-[500px] flex items-center justify-center text-center px-4">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="relative z-10 text-white max-w-3xl">
+            <h2 class="text-yellow-400 font-bold text-lg mb-2 uppercase tracking-widest">Padma Subramaniam Bala Bhavani</h2>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Empowering Future Leaders</h1>
+            <p class="text-lg md:text-xl mb-8 text-gray-200">"To make students confident to nurture challenges and overcome them in a globally competitive world."</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#admissions" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-8 rounded-full transition shadow-lg transform hover:scale-105">Apply Online</a>
+                <a href="#about" class="border-2 border-white hover:bg-white hover:text-blue-900 font-bold py-3 px-8 rounded-full transition">Learn More</a>
+            </div>
         </div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h2>Empowering Minds,<br>Shaping Futures</h2>
-            <p>Providing world-class education with a focus on holistic development and social values.</p>
-            <a href="#admissions" class="btn-primary" style="font-size: 1.1rem;">Admissions Open 2025-26</a>
+    <div class="bg-blue-800 text-white py-2 overflow-hidden flex items-center">
+        <span class="bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 ml-2 rounded uppercase">Latest News</span>
+        <div class="whitespace-nowrap overflow-hidden flex-1 ml-4">
+            <div id="news-ticker" class="inline-block animate-marquee pl-full">
+                </div>
+        </div>
+    </div>
+    <style>
+        .animate-marquee { animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+    </style>
+
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h3 class="text-blue-900 font-bold text-xl mb-2">Welcome to PSBB Matric</h3>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">25+ Years of Excellence in Education</h2>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                    PSBB Matric works to bring equality to all human beings who are deprived of social justice in all walks of life. Our mission is to promote independent thinking and encourage research through critical thinking.
+                </p>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    The founder correspondents of the Trust, Mr. S. Arumugam, Flying Officer (Retd), is a winner of the President's Award twice for his excellent service to the nation.
+                </p>
+                <ul class="space-y-2 mb-8">
+                    <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-3"></i> Recognized by Govt of Tamil Nadu</li>
+                    <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-3"></i> 100% Pass Results in X & XII</li>
+                    <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-3"></i> Smart Class Technology</li>
+                </ul>
+            </div>
+            <div class="bg-gray-200 rounded-lg h-80 flex items-center justify-center relative overflow-hidden shadow-lg">
+                <i class="fas fa-school text-6xl text-gray-400"></i>
+                <div class="absolute bottom-0 left-0 bg-yellow-500 text-blue-900 px-6 py-4 rounded-tr-lg font-bold">
+                    Since 1995
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="news">
-        <div class="container">
-            <div class="section-title">
-                <h3>Latest News & Events</h3>
-                <div class="line"></div>
+    <section id="academics" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Academic Groups</h2>
+                <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+                <p class="mt-4 text-gray-600">We offer a wide range of groups for Higher Secondary students.</p>
             </div>
-            <div class="news-grid" id="news-container">
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition border-t-4 border-blue-900">
+                    <div class="text-3xl text-blue-900 mb-4"><i class="fas fa-flask"></i></div>
+                    <h3 class="font-bold text-xl mb-2">Science Stream</h3>
+                    <p class="text-gray-600 text-sm">Physics, Chemistry, Biology, Maths / Computer Science</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition border-t-4 border-yellow-500">
+                    <div class="text-3xl text-yellow-500 mb-4"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="font-bold text-xl mb-2">Commerce Stream</h3>
+                    <p class="text-gray-600 text-sm">Commerce, Accountancy, Economics, Business Maths / Computer App</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition border-t-4 border-green-500">
+                    <div class="text-3xl text-green-500 mb-4"><i class="fas fa-cogs"></i></div>
+                    <h3 class="font-bold text-xl mb-2">Vocational Stream</h3>
+                    <p class="text-gray-600 text-sm">Electrical, Automobile, Textile Technology, Electronics & more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admissions" class="py-16 bg-blue-900 text-white">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-3xl font-bold mb-4">Admission Enquiry</h2>
+                <p class="mb-8 text-gray-300">Fill out the form to register your interest for the academic year 2025-2026. Our admissions team will contact you shortly.</p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-yellow-500 p-3 rounded-full text-blue-900"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4 class="font-bold">Visit Us</h4>
+                            <p class="text-sm text-gray-300">No.13, Bagavathy street, Sri Chakra Nagar, Mangadu, Chennai – 600 122</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-yellow-500 p-3 rounded-full text-blue-900"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4 class="font-bold">Call Us</h4>
+                            <p class="text-sm text-gray-300">9282145312 / 7358518306</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-2xl text-gray-800">
+                <form id="admissionForm" class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Student Name</label>
+                            <input type="text" name="studentName" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Grade Applying</label>
+                            <select name="grade" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-900">
+                                <option>Pre-KG</option>
+                                <option>LKG</option>
+                                <option>UKG</option>
+                                <option>Class I - V</option>
+                                <option>Class VI - VIII</option>
+                                <option>Class IX - X</option>
+                                <option>Class XI - XII</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Parent/Guardian Name</label>
+                        <input type="text" name="parentName" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-900">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Phone Number</label>
+                            <input type="tel" name="phone" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Email</label>
+                            <input type="email" name="email" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-900">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Message (Optional)</label>
+                        <textarea name="message" rows="3" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-900"></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="w-full bg-blue-900 text-white font-bold py-3 rounded hover:bg-blue-800 transition">
+                        SUBMIT ENQUIRY
+                    </button>
+                    <p id="formStatus" class="text-center text-sm mt-2 hidden"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">Latest Updates</h2>
+            <div id="news-grid" class="grid md:grid-cols-3 gap-6">
                 </div>
         </div>
     </section>
 
-    <section id="about" class="about-section">
-        <div class="container about-grid">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1544531696-9348411888f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="School Campus">
+    <footer class="bg-gray-900 text-gray-400 py-12 text-sm">
+        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">PSBB Matric</h4>
+                <p class="mb-4">To identify and motivate talent to groom a child's individuality and mould them into responsible global citizens.</p>
             </div>
-            <div class="about-text">
-                <h3>About Our School</h3>
-                <p>PSBB Matriculation Higher Secondary School, a unit of Indira Arumugam Charity Trust, is dedicated to bringing quality education to all. Our founder believes that international benchmarked syllabi open a new world of opportunities.</p>
-                <p><strong>Vision:</strong> To bring equality to all human beings who are deprived of social justice in all walks of life.</p>
-                <a href="#" style="color: var(--accent); font-weight: 600;">Read Principal's Message &rarr;</a>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#about" class="hover:text-white">About Us</a></li>
+                    <li><a href="#academics" class="hover:text-white">Academics</a></li>
+                    <li><a href="#admissions" class="hover:text-white">Admissions</a></li>
+                    <li><a href="#" class="hover:text-white">NeverSkip Login</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Contact Info</h4>
+                <p>No.13, Bagavathy street,<br>Sri Chakra Nagar, Mangadu,<br>Chennai – 600 122</p>
+                <p class="mt-2 text-white">psbb_school@yahoo.co.in</p>
+                <p class="text-white">9282145312</p>
             </div>
         </div>
-    </section>
-
-    <section id="toppers">
-        <div class="container">
-            <div class="section-title">
-                <h3>Our Academic Achievers</h3>
-                <div class="line"></div>
-            </div>
-            <div class="toppers-grid" id="toppers-container">
-                </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>PSBB Matric. Hr. Sec. School</h4>
-                    <p class="contact-info">
-                        <span>📍</span> No.123, School Road, Mangadu, Chennai - 600122.
-                    </p>
-                    <p class="contact-info">
-                        <span>📞</span> +91 92821 45312
-                    </p>
-                    <p class="contact-info">
-                        <span>✉️</span> psbb_school@yahoo.co.in
-                    </p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#">Academic Calendar</a></li>
-                        <li><a href="#">Download Application</a></li>
-                        <li><a href="#">NeverSkip Login</a></li>
-                        <li><a href="#">Webmail</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>School Hours</h4>
-                    <ul>
-                        <li>Pre-Primary: 9.00 AM - 12.00 PM</li>
-                        <li>Grades 1-2: 8.45 AM - 3.00 PM</li>
-                        <li>Grades 3-12: 8.30 AM - 3.15 PM</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; <span id="year"></span> PSBB Matriculation Higher Secondary School. All Rights Reserved.</p>
-            </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p>&copy; 2025 PSBB Matric Higher Secondary School. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        /* =======================================================
-           EASY UPDATE SECTION - EDIT DATA BELOW
-        =======================================================
-        */
-        const SCHOOL_DATA = {
-            // 1. The text appearing in the top bar
-            announcement: "📢 Admissions Open for 2025-2026 (Pre-KG to Grade XII) - Apply Now!",
+        // ----------------------------------------------------
+        // 1. DATA CONFIGURATION (UPDATE NEWS HERE)
+        // ----------------------------------------------------
+        const newsData = [
+            {
+                title: "Admissions Open 2025-26",
+                date: "Dec 11, 2025",
+                desc: "We are now accepting applications for Pre-KG to Grade XII for the upcoming academic year.",
+                tag: "Admissions"
+            },
+            {
+                title: "Infrastructure Upgrade",
+                date: "Jan 10, 2026",
+                desc: "New RO Water facility and upgraded Computer Labs are now available for students.",
+                tag: "Facility"
+            },
+            {
+                title: "Sports Day Achievements",
+                date: "Nov 20, 2025",
+                desc: "Our students bagged district level medals in Volleyball and Shuttle.",
+                tag: "Sports"
+            }
+        ];
+
+        // ----------------------------------------------------
+        // 2. GOOGLE APPS SCRIPT URL (REPLACE THIS LATER)
+        // ----------------------------------------------------
+        // Step 1: Create script (Instructions below). Step 2: Paste URL here.
+        const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE"; 
+
+        // ----------------------------------------------------
+        // 3. RENDER NEWS & TICKER
+        // ----------------------------------------------------
+        const newsTicker = document.getElementById('news-ticker');
+        const newsGrid = document.getElementById('news-grid');
+
+        newsData.forEach(item => {
+            // Ticker Item
+            const span = document.createElement('span');
+            span.className = "inline-block mr-12 text-sm font-semibold";
+            span.innerHTML = `<i class="fas fa-star text-yellow-400 mr-2"></i> ${item.title} - ${item.desc}`;
+            newsTicker.appendChild(span);
+
+            // News Card
+            const card = document.createElement('div');
+            card.className = "bg-white p-6 rounded shadow hover:shadow-lg transition";
+            card.innerHTML = `
+                <div class="text-xs font-bold text-yellow-600 mb-2 uppercase">${item.tag}</div>
+                <h3 class="font-bold text-lg text-blue-900 mb-2">${item.title}</h3>
+                <p class="text-gray-600 text-sm mb-4">${item.desc}</p>
+                <div class="text-xs text-gray-400"><i class="far fa-calendar-alt mr-1"></i> ${item.date}</div>
+            `;
+            newsGrid.appendChild(card);
+        });
+
+        // ----------------------------------------------------
+        // 4. POPUP LOGIC
+        // ----------------------------------------------------
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const popup = document.getElementById('admissionPopup');
+                const content = document.getElementById('popupContent');
+                popup.classList.add('active');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 1000); // Opens 1 second after load
+        });
+
+        function closePopup() {
+            const popup = document.getElementById('admissionPopup');
+            popup.classList.remove('active');
+        }
+
+        // ----------------------------------------------------
+        // 5. MOBILE MENU
+        // ----------------------------------------------------
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('open');
+        }
+
+        // ----------------------------------------------------
+        // 6. FORM SUBMISSION (CONNECT TO GOOGLE SHEET)
+        // ----------------------------------------------------
+        const form = document.getElementById('admissionForm');
+        const statusMsg = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
             
-            // 2. News Items (Add new items to the top of the list)
-            news: [
-                {
-                    date: "11 Dec 2024",
-                    title: "Admissions Open 2025 - 2026",
-                    desc: "We are now accepting applications for the upcoming academic year. Visit the school office or download the form online."
-                },
-                {
-                    date: "15 Jan 2026",
-                    title: "Pongal Celebration",
-                    desc: "Students celebrated Pongal with traditional attire and cultural performances. Photos available in the gallery."
-                },
-                {
-                    date: "20 Jan 2026",
-                    title: "Annual Sports Day",
-                    desc: "The Annual Sports Day will be held on Feb 10th at the main ground. Parents are invited."
-                }
-            ],
+            // UI Feedback
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Sending...";
+            
+            // If user hasn't set up the script yet, show mock success
+            if (SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE") {
+                setTimeout(() => {
+                    statusMsg.innerText = "Success! (Note: Connect Google Script to save data real-time)";
+                    statusMsg.className = "text-center text-sm mt-2 text-green-600 font-bold";
+                    submitBtn.innerText = "SUBMIT ENQUIRY";
+                    submitBtn.disabled = false;
+                    form.reset();
+                }, 1500);
+                return;
+            }
 
-            // 3. Toppers (Add photos and scores here)
-            toppers: [
-                { name: "Student A", score: "495/500", grade: "XII" },
-                { name: "Student B", score: "492/500", grade: "XII" },
-                { name: "Student C", score: "489/500", grade: "X" },
-                { name: "Student D", score: "485/500", grade: "X" }
-            ]
-        };
-
-        /* =======================================================
-           SYSTEM LOGIC (DO NOT EDIT UNLESS YOU KNOW JS)
-        =======================================================
-        */
-
-        // Render Announcement
-        document.getElementById('announcement-bar').innerText = SCHOOL_DATA.announcement;
-
-        // Render News
-        const newsContainer = document.getElementById('news-container');
-        SCHOOL_DATA.news.forEach(item => {
-            const html = `
-                <div class="news-card">
-                    <div class="news-date">${item.date}</div>
-                    <div class="news-body">
-                        <h4>${item.title}</h4>
-                        <p>${item.desc}</p>
-                    </div>
-                </div>
-            `;
-            newsContainer.innerHTML += html;
-        });
-
-        // Render Toppers
-        const toppersContainer = document.getElementById('toppers-container');
-        SCHOOL_DATA.toppers.forEach(student => {
-            const html = `
-                <div class="topper-card">
-                    <img src="https://via.placeholder.com/100" alt="${student.name}" class="topper-img">
-                    <div class="topper-score">${student.score}</div>
-                    <div class="topper-name">${student.name}</div>
-                    <small>Class ${student.grade}</small>
-                </div>
-            `;
-            toppersContainer.innerHTML += html;
-        });
-
-        // Set Copyright Year
-        document.getElementById('year').innerText = new Date().getFullYear();
-
-        // Mobile Menu Logic
-        const menuToggle = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                navLinks.classList.remove('active'); // Close menu on click
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+            // Real Submission
+            const formData = new FormData(form);
+            fetch(SCRIPT_URL, { method: 'POST', body: formData })
+                .then(response => {
+                    statusMsg.innerText = "Thank you! We will contact you soon.";
+                    statusMsg.className = "text-center text-sm mt-2 text-green-600 font-bold";
+                    statusMsg.classList.remove('hidden');
+                    form.reset();
+                    submitBtn.innerText = "SUBMIT ENQUIRY";
+                    submitBtn.disabled = false;
+                })
+                .catch(error => {
+                    statusMsg.innerText = "Error! Please try again or call us.";
+                    statusMsg.className = "text-center text-sm mt-2 text-red-600 font-bold";
+                    statusMsg.classList.remove('hidden');
+                    submitBtn.disabled = false;
                 });
-            });
         });
     </script>
 </body>
